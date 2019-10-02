@@ -45,7 +45,7 @@ class _MyHomePageState extends State<MyHomePage> {
               onPressed: () {
                 Navigator.pushNamed(context, externalRoute,
                     arguments:
-                        ExternalRouteArguments('https://github.com/vaygeth89'));
+                        ExternalRouteArguments('https://github.com/vaygeth89/flutter_for_web_part1'));
               },
             ),
             InputChip(
