@@ -11,8 +11,9 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
+      //We register our Router Class
       onGenerateRoute: Router.generateRoute,
-      home: MyHomePage(title: 'Flutter Demo Home Page'),
+      home: MyHomePage(title: 'Flutter for Web Part 1'),
     );
   }
 }
@@ -43,8 +44,8 @@ class _MyHomePageState extends State<MyHomePage> {
                   "https://upload.wikimedia.org/wikipedia/commons/thumb/9/95/Font_Awesome_5_brands_github.svg/54px-Font_Awesome_5_brands_github.svg.png"),
               onPressed: () {
                 Navigator.pushNamed(context, externalRoute,
-                    arguments: ExternalRouteArguments(
-                        'https://github.com/vaygeth89'));
+                    arguments:
+                        ExternalRouteArguments('https://github.com/vaygeth89'));
               },
             ),
             InputChip(
@@ -57,7 +58,6 @@ class _MyHomePageState extends State<MyHomePage> {
           ],
         ),
       ),
-      // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
 }
