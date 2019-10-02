@@ -40,8 +40,7 @@ class _MyHomePageState extends State<MyHomePage> {
           children: <Widget>[
             InputChip(
               label: Text("External Route to Github"),
-              avatar: Image.network(
-                  "https://upload.wikimedia.org/wikipedia/commons/thumb/9/95/Font_Awesome_5_brands_github.svg/54px-Font_Awesome_5_brands_github.svg.png"),
+              avatar: Icon(Icons.exit_to_app),
               onPressed: () {
                 Navigator.pushNamed(context, externalRoute,
                     arguments:
