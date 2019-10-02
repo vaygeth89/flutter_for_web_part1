@@ -50,7 +50,7 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
             InputChip(
               label: Text("Internal Route"),
-              avatar: Icon(Icons.person),
+              avatar: Icon(Icons.arrow_downward),
               onPressed: () {
                 Navigator.pushNamed(context, internalRoute);
               },
