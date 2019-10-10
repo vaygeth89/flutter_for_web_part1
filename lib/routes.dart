@@ -19,7 +19,8 @@ class Router {
   static Route<dynamic> generateRoute(RouteSettings settings) {
     switch (settings.name) {
       case homePageRoute:
-        return MaterialPageRoute(builder: (_) => MyHomePage());
+        return MaterialPageRoute(
+            builder: (_) => MyHomePage(title: MyHomePage.homeTitle));
 
       case internalRoute:
         return MaterialPageRoute(builder: (_) => MyInternalScreen());
@@ -32,19 +33,23 @@ class Router {
 
             if (arguments != null) {
               if (arguments.showAlertMessage)
-              //this is where dart to html proxying happens
-                html.window.alert("You're being redirected to external website");
+                //this is where dart to html proxying happens
+                html.window
+                    .alert("You're being redirected to \n ${arguments.url}");
               html.window.location.href = arguments.url;
-              return Container();
+              // return Container();
             }
-            //For simplicity we will the home page again, how you handle it is your preference
-            return MyHomePage();
+            //For simplicity we will go bk to home page again, you can decide how you handle it
+            return MyHomePage(
+              title: MyHomePage.homeTitle,
+            );
           });
         }
 
       default:
         {
-          return MaterialPageRoute(builder: (_) => MyHomePage());
+          return MaterialPageRoute(
+              builder: (_) => MyHomePage(title: MyHomePage.homeTitle));
         }
     }
   }
