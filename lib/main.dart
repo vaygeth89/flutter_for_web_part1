@@ -75,7 +75,8 @@ class _MyHomePageState extends State<MyHomePage> {
 }
 
 class MyInternalScreen extends StatelessWidget {
-  const MyInternalScreen({Key key}) : super(key: key);
+  final String myData;
+  const MyInternalScreen({Key key,this.myData}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -85,9 +86,18 @@ class MyInternalScreen extends StatelessWidget {
       ),
       body: Container(
           child: Center(
-        child: Text(
-          "Internal Route Screen",
-          style: TextStyle(fontSize: 25),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            Text(
+              "Internal Route Screen",
+              style: TextStyle(fontSize: 25),
+            ),
+            Text(
+              this.myData,
+              style: TextStyle(fontSize: 23,color: Colors.redAccent,
+            ),)
+          ],
         ),
       )),
     );
