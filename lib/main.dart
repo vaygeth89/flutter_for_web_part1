@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'dart:html' as html;
-import 'dart:js' as js;
+import 'dart:html' as html; // importing the HTML proxying library and named it as html
+import 'dart:js' as js; // importing the Javascript proxying library and named it as js
 
 void main() => runApp(MyApp());
 
