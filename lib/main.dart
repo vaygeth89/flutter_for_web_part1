@@ -89,6 +89,13 @@ class _MyHomePageState extends State<MyHomePage> {
           ],
         ),
       ),
+      floatingActionButton: FloatingActionButton(
+        child: Icon(Icons.refresh),
+        onPressed: (){
+          // Refresh & reloads your page
+          html.window.location.reload();
+        },
+      ),
     );
   }
 }
