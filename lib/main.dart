@@ -57,7 +57,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 //Creates json object from javascript library
                 js.JsObject jsonObject = js.JsObject(js.context['Object']);
 
-                //Create object {"route":"/internal"}
+                //Create object {"message":"Flutter Web"}
                 jsonObject["message"] = 'Flutter Web';
 
                 //Executes javascripts console.log();
