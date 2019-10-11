@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_for_web_part1/routes.dart' as RouterFile;
+import 'dart:html' as html;
+import 'dart:js' as js;
 
 void main() => runApp(MyApp());
 
@@ -12,9 +13,9 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
       // Give it a route that load when app is running
-      initialRoute: RouterFile.homePageRoute,
-      // We register our Router Class
-      onGenerateRoute: RouterFile.Router.generateRoute,
+      home: MyHomePage(
+        title: MyHomePage.homeTitle,
+      ),
     );
   }
 }
@@ -45,7 +46,23 @@ class _MyHomePageState extends State<MyHomePage> {
             // InkWell is widget used to add taps & gestures events to child
             InkWell(
               onTap: () {
-                Navigator.pushNamed(context, RouterFile.internalRoute);
+                //Dart to HTML Proxying
+                //Stores the cookie into the browsers local storage
+                html.window.localStorage.addEntries([
+                  MapEntry(
+                      "data", "this data is stored on browser local storage")
+                ]);
+
+                //Dart to Javascript Proxying
+                //Creates json object from javascript library
+                js.JsObject jsonObject = js.JsObject(js.context['Object']);
+
+                //Create object {"route":"/internal"}
+                jsonObject["message"] = 'Flutter Web';
+
+                //Executes javascripts console.log();
+                js.context["console"].callMethod(
+                    "log", ['internalRoute', '\n', jsonObject["message"]]);
               },
               child: Image.network(
                 "https://flutter.dev/assets/flutter-lockup-4cb0ee072ab312e59784d9fbf4fb7ad42688a7fdaea1270ccf6bbf4f34b7e03f.svg",
@@ -57,9 +74,11 @@ class _MyHomePageState extends State<MyHomePage> {
               onTap: () {
                 String externalUrl =
                     'https://github.com/vaygeth89/flutter_for_web_part1';
-                Navigator.pushNamed(context, RouterFile.externalRoute,
-                    arguments: RouterFile.ExternalRouteArguments(externalUrl,
-                        showAlertMessage: true));
+                html.window.alert("You're being redirected to \n $externalUrl");
+
+                //Dart to Javascript Proxying
+                //Executes javascripts window.open(https://github.com/vaygeth89/flutter_for_web_part1, '');
+                js.context.callMethod("open", [externalUrl]);
               },
               child: Image.network(
                 "https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png",
@@ -70,36 +89,6 @@ class _MyHomePageState extends State<MyHomePage> {
           ],
         ),
       ),
-    );
-  }
-}
-
-class MyInternalScreen extends StatelessWidget {
-  final String myData;
-  const MyInternalScreen({Key key,this.myData}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text("Internal Route"),
-      ),
-      body: Container(
-          child: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Text(
-              "Internal Route Screen",
-              style: TextStyle(fontSize: 25),
-            ),
-            Text(
-              this.myData,
-              style: TextStyle(fontSize: 23,color: Colors.redAccent,
-            ),)
-          ],
-        ),
-      )),
     );
   }
 }
