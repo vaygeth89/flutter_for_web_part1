@@ -39,7 +39,7 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
       body: Container(
         alignment: Alignment.center,
-        color: Colors.greenAccent,
+        color: Colors.white,
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: <Widget>[
@@ -47,7 +47,6 @@ class _MyHomePageState extends State<MyHomePage> {
             InkWell(
               onTap: () {
                 //Dart to HTML Proxying
-                //Stores the cookie into the browsers local storage
                 html.window.localStorage.addEntries([
                   MapEntry(
                       "data", "this data is stored on browser local storage")
@@ -92,7 +91,6 @@ class _MyHomePageState extends State<MyHomePage> {
       floatingActionButton: FloatingActionButton(
         child: Icon(Icons.refresh),
         onPressed: (){
-          // Refresh & reloads your page
           html.window.location.reload();
         },
       ),
