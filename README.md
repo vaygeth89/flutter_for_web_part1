@@ -9,4 +9,5 @@ Part 1 Covers handling application redirection between internal routes & externa
 
 ## Related Articles
 
-
+Medium Article
+https://medium.com/@vaygeth/flutter-web-darts-html-javascript-proxying-to-access-the-dom-69e2008eb320
